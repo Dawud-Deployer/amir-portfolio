@@ -4,6 +4,9 @@ import {
   getNavigationItems, getFooterSettings, getSocialLinks, getSiteSettings
 } from '@/lib/services/public-data';
 
+/** Revalidate layout data every 60s; admin saves trigger instant revalidation */
+export const revalidate = 60;
+
 export default async function PublicLayout({
   children,
 }: {
@@ -22,6 +25,7 @@ export default async function PublicLayout({
         navItems={navItems}
         socialLinks={socialLinks}
         siteName={siteSettings?.site_name || 'Amir Hussen'}
+        logoUrl={siteSettings?.logo_url || undefined}
       />
       <main className="flex-1">{children}</main>
       <PublicFooter
@@ -38,6 +42,7 @@ export default async function PublicLayout({
         }}
         socialLinks={socialLinks}
         navItems={navItems}
+        logoUrl={siteSettings?.logo_url || undefined}
       />
     </div>
   );

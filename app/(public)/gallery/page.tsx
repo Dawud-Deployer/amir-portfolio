@@ -4,7 +4,7 @@ export const metadata = { title: 'Gallery — Amir Hussen' };
 
 export default async function GalleryPage() {
   const items = await getGalleryItems();
-  const categories = [...new Set(items.map(i => i.category).filter(Boolean))] as string[];
+  const categories = Array.from(new Set(items.map(i => i.category).filter(Boolean))) as string[];
 
   return (
     <div className="pt-24 pb-20">

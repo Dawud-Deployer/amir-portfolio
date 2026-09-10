@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { motion, useReducedMotion } from 'framer-motion';
 import { Calendar, MapPin, ArrowRight, Clock } from 'lucide-react';
 import type { EventItem } from '@/lib/types/database';
@@ -15,12 +16,12 @@ export function EventsSection({ events }: Props) {
   if (upcoming.length === 0) return null;
 
   return (
-    <section className="section-py bg-secondary/30">
+    <section className="section-py bg-[hsl(145_20%_97%)]">
       <div className="container-px mx-auto max-w-7xl">
         <div className="flex items-end justify-between mb-8 md:mb-12">
           <div>
-            <span className="text-sm font-medium text-primary uppercase tracking-wider">Events</span>
-            <h2 className="heading-serif text-3xl md:text-4xl lg:text-5xl font-bold mt-2">Upcoming Events</h2>
+            <span className="eyebrow">Events</span>
+            <h2 className="heading-serif text-3xl md:text-4xl lg:text-5xl font-bold mt-2 text-foreground">Upcoming Events</h2>
           </div>
           <Link href="/events" className="hidden sm:inline-flex items-center gap-2 text-sm font-medium text-primary hover:gap-3 transition-all">
             View All <ArrowRight className="w-4 h-4" />
@@ -39,14 +40,14 @@ export function EventsSection({ events }: Props) {
               <Link href={`/events/${event.slug}`} className="group block rounded-lg overflow-hidden border border-border/50 bg-card hover:border-primary/40 transition-all">
                 <div className="relative aspect-[3/2] overflow-hidden">
                   {event.cover_url || event.poster_url ? (
-                    <img src={event.cover_url || event.poster_url || ''} alt={event.title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                    <Image src={event.cover_url || event.poster_url || ''} alt={event.title} fill sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 33vw" className="object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
                   ) : (
                     <div className="w-full h-full bg-gradient-to-br from-secondary to-background flex items-center justify-center">
                       <Calendar className="w-12 h-12 text-primary/20" />
                     </div>
                   )}
-                  <div className="absolute top-3 left-3 bg-background/90 backdrop-blur-sm rounded-md px-3 py-1.5">
-                    <span className="text-xs font-medium text-primary uppercase">{event.status}</span>
+                  <div className="absolute top-3 left-3 bg-white/90 backdrop-blur-sm rounded-md px-3 py-1.5">
+                    <span className="text-xs font-semibold text-primary uppercase tracking-eyebrow">{event.status}</span>
                   </div>
                 </div>
                 <div className="p-5">

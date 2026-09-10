@@ -29,7 +29,7 @@ export default async function EventDetailPage({ params }: Props) {
 
         <div className="relative aspect-[2/1] rounded-lg overflow-hidden border border-border/50 shadow-xl mb-8">
           {event.cover_url || event.poster_url ? (
-            <img src={event.cover_url || event.poster_url} alt={event.title} className="w-full h-full object-cover" />
+            <img src={event.cover_url || event.poster_url || undefined} alt={event.title} className="w-full h-full object-cover" />
           ) : (
             <div className="w-full h-full bg-gradient-to-br from-secondary to-background" />
           )}
@@ -99,7 +99,7 @@ export default async function EventDetailPage({ params }: Props) {
                 <Link key={r.id} href={`/events/${r.slug}`} className="group block rounded-lg overflow-hidden border border-border/50">
                   <div className="relative aspect-[3/2] overflow-hidden">
                     {r.cover_url || r.poster_url ? (
-                      <img src={r.cover_url || r.poster_url} alt={r.title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                      <img src={r.cover_url || r.poster_url || undefined} alt={r.title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
                     ) : (
                       <div className="w-full h-full bg-secondary" />
                     )}

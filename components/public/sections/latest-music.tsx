@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { motion, useReducedMotion } from 'framer-motion';
 import { Play, ArrowRight } from 'lucide-react';
 import type { Music } from '@/lib/types/database';
@@ -39,7 +40,7 @@ export function LatestMusicSection({ music }: Props) {
               <Link href={`/menzuma/${track.slug}`} className="group block">
                 <div className="relative aspect-square rounded-lg overflow-hidden border border-border/50 bg-secondary">
                   {track.cover_url ? (
-                    <img src={track.cover_url} alt={track.title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                    <Image src={track.cover_url} alt={track.title} fill sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 16vw" className="object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
                   ) : (
                     <div className="w-full h-full flex items-center justify-center">
                       <Play className="w-8 h-8 text-primary/30" />

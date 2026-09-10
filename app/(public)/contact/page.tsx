@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { createClient } from '@/lib/supabase/client';
+import { validateEmail, validateLength, validatePhoneNumber } from '@/lib/validation';
 import { toast } from 'sonner';
 import { Send, Loader2 } from 'lucide-react';
 
@@ -21,11 +22,39 @@ export default function ContactPage() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    // Validate form inputs
+    if (!validateLength(form.name, 2, 100)) {
+      toast.error('Name must be between 2 and 100 characters.');
+      return;
+    }
+    if (!validateEmail(form.email)) {
+      toast.error('Please enter a valid email address.');
+      return;
+    }
+    if (form.phone && !validatePhoneNumber(form.phone)) {
+      toast.error('Phone number format is invalid.');
+      return;
+    }
+    if (!validateLength(form.message, 10, 5000)) {
+      toast.error('Message must be between 10 and 5000 characters.');
+      return;
+    }
+
     setLoading(true);
 
     try {
       const supabase = createClient();
-      const { error } = await supabase.from('contact_messages').insert(form);
+      const { error } = await supabase.from('contact_messages').insert({
+        ...form,
+        name: form.name.trim(),
+        email: form.email.trim().toLowerCase(),
+        phone: form.phone.trim(),
+        organization: form.organization.trim(),
+        subject: form.subject.trim(),
+        location: form.location.trim(),
+        message: form.message.trim(),
+      });
       if (error) {
         toast.error('Could not send message. Please try again.');
       } else {

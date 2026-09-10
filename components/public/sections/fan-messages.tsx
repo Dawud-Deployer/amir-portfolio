@@ -15,10 +15,10 @@ export function FanMessagesSection({ messages }: Props) {
   if (toShow.length === 0) return null;
 
   return (
-    <section className="section-py bg-secondary/30">
+    <section className="section-py bg-background">
       <div className="container-px mx-auto max-w-7xl">
         <div className="text-center mb-10">
-          <span className="text-sm font-medium text-primary uppercase tracking-wider">Fan Messages</span>
+          <span className="eyebrow">Fan Messages</span>
           <h2 className="heading-serif text-3xl md:text-4xl lg:text-5xl font-bold mt-2">Words from Listeners</h2>
         </div>
 

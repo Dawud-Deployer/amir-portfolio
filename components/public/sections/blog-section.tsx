@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { motion, useReducedMotion } from 'framer-motion';
 import { ArrowRight, Calendar } from 'lucide-react';
 import type { BlogPost } from '@/lib/types/database';
@@ -39,7 +40,7 @@ export function BlogSection({ posts }: Props) {
               <Link href={`/blog/${post.slug}`} className="group block rounded-lg overflow-hidden border border-border/50 bg-card hover:border-primary/40 transition-all">
                 <div className="relative aspect-[2/1] overflow-hidden">
                   {post.cover_url ? (
-                    <img src={post.cover_url} alt={post.title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                    <Image src={post.cover_url} alt={post.title} fill sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 33vw" className="object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
                   ) : (
                     <div className="w-full h-full bg-gradient-to-br from-secondary to-background" />
                   )}

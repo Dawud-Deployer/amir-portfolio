@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { motion, useReducedMotion } from 'framer-motion';
 import { Play } from 'lucide-react';
 import type { Video } from '@/lib/types/database';
@@ -15,7 +16,7 @@ export function FeaturedVideoSection({ video }: Props) {
   const embedUrl = getYouTubeEmbed(video.external_url);
 
   return (
-    <section className="section-py gradient-emerald">
+    <section className="section-py bg-[hsl(145_20%_97%)]">
       <div className="container-px mx-auto max-w-5xl">
         <motion.div
           initial={reduceMotion ? {} : { opacity: 0, y: 30 }}
@@ -34,12 +35,13 @@ export function FeaturedVideoSection({ video }: Props) {
                 src={embedUrl}
                 title={video.title}
                 className="w-full h-full"
+                loading="lazy"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
               />
             ) : video.thumbnail_url ? (
               <div className="relative w-full h-full">
-                <img src={video.thumbnail_url} alt={video.title} className="w-full h-full object-cover" />
+                <Image src={video.thumbnail_url} alt={video.title} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover" loading="lazy" />
                 <div className="absolute inset-0 flex items-center justify-center bg-background/30">
                   <Play className="w-16 h-16 text-primary" />
                 </div>

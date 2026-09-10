@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { motion, useReducedMotion } from 'framer-motion';
 import type { GalleryItem } from '@/lib/types/database';
 
@@ -14,11 +15,11 @@ export function GallerySection({ items }: Props) {
   if (display.length === 0) return null;
 
   return (
-    <section className="section-py gradient-emerald">
+    <section className="section-py bg-[hsl(155_60%_9%)]">
       <div className="container-px mx-auto max-w-7xl">
         <div className="text-center mb-10">
-          <span className="text-sm font-medium text-primary uppercase tracking-wider">Gallery</span>
-          <h2 className="heading-serif text-3xl md:text-4xl lg:text-5xl font-bold mt-2">Visual Moments</h2>
+          <span className="text-xs font-semibold uppercase tracking-eyebrow" style={{ color: 'hsl(145 30% 65%)' }}>Gallery</span>
+          <h2 className="heading-serif text-3xl md:text-4xl lg:text-5xl font-bold mt-2 text-white">Visual Moments</h2>
         </div>
 
         <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
@@ -34,7 +35,7 @@ export function GallerySection({ items }: Props) {
               }`}
             >
               {item.image_url ? (
-                <img src={item.image_url} alt={item.alt_text || item.title || 'Gallery image'} className="w-full h-full object-cover aspect-square transition-transform duration-500 group-hover:scale-105" />
+                <Image src={item.image_url} alt={item.alt_text || item.title || 'Gallery image'} fill sizes="(max-width: 768px) 50vw, 33vw" className="object-cover aspect-square transition-transform duration-500 group-hover:scale-105" loading="lazy" />
               ) : (
                 <div className="w-full aspect-square bg-secondary flex items-center justify-center">
                   <span className="text-muted-foreground text-xs">No image</span>

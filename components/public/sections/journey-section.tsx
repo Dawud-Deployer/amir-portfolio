@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { motion, useReducedMotion } from 'framer-motion';
 import type { JourneyItem } from '@/lib/types/database';
 
@@ -35,8 +36,8 @@ export function JourneySection({ items }: Props) {
               <div className="ml-12 md:ml-0 md:w-1/2 md:px-8">
                 <div className="rounded-lg border border-border/50 bg-card p-5">
                   {item.image_url && (
-                    <div className="mb-4 rounded-md overflow-hidden">
-                      <img src={item.image_url} alt={item.title} className="w-full h-32 object-cover" />
+                    <div className="relative h-32 mb-4 rounded-md overflow-hidden">
+                      <Image src={item.image_url} alt={item.title} fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover" loading="lazy" />
                     </div>
                   )}
                   <span className="text-sm font-medium text-primary">{item.year_label}</span>

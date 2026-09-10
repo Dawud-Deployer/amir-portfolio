@@ -197,19 +197,18 @@ CREATE INDEX IF NOT EXISTS idx_social_links_sort ON public.social_links(sort_ord
 
 ALTER TABLE public.social_links ENABLE ROW LEVEL SECURITY;
 
--- Theme settings
+-- Theme settings (green & white system)
 CREATE TABLE IF NOT EXISTS public.theme_settings (
   id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
-  preset text NOT NULL DEFAULT 'emerald',
-  primary_bg text DEFAULT '#0a1f1a',
-  secondary_bg text DEFAULT '#0f2a22',
-  accent text DEFAULT '#c9a96e',
-  gold_highlight text DEFAULT '#d4af37',
-  text_color text DEFAULT '#f5f5f0',
-  muted_text text DEFAULT '#9ca3af',
+  preset text NOT NULL DEFAULT 'forest-white',
+  primary_bg text DEFAULT 'hsl(152 55% 22%)',
+  secondary_bg text DEFAULT 'hsl(145 20% 97%)',
+  accent text DEFAULT 'hsl(152 65% 32%)',
+  text_color text DEFAULT 'hsl(155 40% 10%)',
+  muted_text text DEFAULT 'hsl(152 20% 45%)',
   heading_font text DEFAULT 'Playfair Display',
   body_font text DEFAULT 'Inter',
-  border_radius text DEFAULT '0.5rem',
+  border_radius text DEFAULT '0.375rem',
   button_style text DEFAULT 'rounded',
   section_spacing text DEFAULT 'normal',
   animation_intensity text DEFAULT 'moderate',

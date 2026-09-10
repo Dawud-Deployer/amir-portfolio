@@ -2,55 +2,114 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ─── Green & White Design System ─────────────────────────────────────────── */
+/* Palette philosophy:
+   - Deep forest green carries the brand. White carries breathing room.
+   - Gold is gone. Emerald accent is the single "premium" highlight.
+   - Dark mode: near-black deep green surfaces / soft-white text.
+   - Light mode: pure white / soft-white surfaces / deep green text.
+   - WCAG AA contrast enforced on every text/background combination.
+*/
+
 @layer base {
   :root {
-    --background: 165 30% 7%;
-    --foreground: 60 10% 96%;
-    --card: 165 25% 9%;
-    --card-foreground: 60 10% 96%;
-    --popover: 165 25% 9%;
-    --popover-foreground: 60 10% 96%;
-    --primary: 42 35% 62%;
-    --primary-foreground: 165 30% 7%;
-    --secondary: 165 20% 12%;
-    --secondary-foreground: 60 10% 96%;
-    --muted: 165 15% 15%;
-    --muted-foreground: 60 5% 65%;
-    --accent: 42 35% 62%;
-    --accent-foreground: 165 30% 7%;
-    --destructive: 0 62% 45%;
-    --destructive-foreground: 60 10% 96%;
-    --border: 165 15% 18%;
-    --input: 165 15% 18%;
-    --ring: 42 35% 62%;
-    --radius: 0.5rem;
-    --chart-1: 165 60% 30%;
-    --chart-2: 42 35% 62%;
-    --chart-3: 165 40% 20%;
-    --chart-4: 30 40% 55%;
-    --chart-5: 200 30% 50%;
+    /* ── BOLD 2026 Brand green tokens ── */
+    --color-primary:        145 83% 35%;   /* VIBRANT EMERALD GREEN #10B981 */
+    --color-primary-dark:   145 90% 28%;   /* DEEP DARK GREEN #0d8659 */
+    --color-primary-light:  145 100% 90%;  /* BRIGHT MINT #a8f0de */
+    --color-accent:         145 100% 43%;  /* NEON BRIGHT GREEN #1dd1a1 */
+
+    /* ── Surface tokens ── */
+    --color-surface:        0 0% 100%;     /* pure white */
+    --color-surface-alt:    0 0% 99%;      /* super clean off-white #fafafa */
+
+    /* ── Text tokens ── */
+    --color-text:           0 0% 12%;      /* BOLD DARK #1f1f1f */
+    --color-text-muted:     0 0% 45%;      /* strong gray #737373 */
+
+    /* ── Border token ── */
+    --color-border:         0 0% 92%;      /* clean light gray #ebebeb */
+
+    /* ── shadcn/ui semantic aliases ── */
+    --background:           var(--color-surface);
+    --foreground:           var(--color-text);
+
+    --card:                 var(--color-surface);
+    --card-foreground:      var(--color-text);
+
+    --popover:              var(--color-surface);
+    --popover-foreground:   var(--color-text);
+
+    --primary:              var(--color-primary);
+    --primary-foreground:   0 0% 100%;
+
+    --secondary:            var(--color-surface-alt);
+    --secondary-foreground: var(--color-text);
+
+    --muted:                var(--color-surface-alt);
+    --muted-foreground:     var(--color-text-muted);
+
+    --accent:               var(--color-accent);
+    --accent-foreground:    0 0% 100%;
+
+    --destructive:          0 72% 50%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border:               var(--color-border);
+    --input:                var(--color-border);
+    --ring:                 var(--color-primary);
+
+    --radius:               0.5rem;
+
+    /* ── Chart colors (vibrant green family) ── */
+    --chart-1:  145 83% 35%;
+    --chart-2:  145 100% 43%;
+    --chart-3:  145 90% 50%;
+    --chart-4:  145 80% 60%;
+    --chart-5:  145 70% 75%;
   }
 
-  .light {
-    --background: 40 30% 97%;
-    --foreground: 165 40% 10%;
-    --card: 0 0% 100%;
-    --card-foreground: 165 40% 10%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 165 40% 10%;
-    --primary: 165 50% 20%;
-    --primary-foreground: 60 10% 96%;
-    --secondary: 40 20% 92%;
-    --secondary-foreground: 165 40% 10%;
-    --muted: 40 15% 90%;
-    --muted-foreground: 165 10% 40%;
-    --accent: 42 35% 52%;
-    --accent-foreground: 165 30% 7%;
-    --destructive: 0 62% 45%;
-    --destructive-foreground: 60 10% 96%;
-    --border: 40 15% 85%;
-    --input: 40 15% 85%;
-    --ring: 165 50% 20%;
+  /* ── Dark mode — sleek BOLD surfaces ── */
+  .dark {
+    --color-surface:        0 0% 11%;      /* DEEP CHARCOAL #1a1a1a */
+    --color-surface-alt:    0 0% 16%;      /* BOLD SURFACE #292929 */
+    --color-text:           0 0% 97%;      /* CRISP WHITE #f7f7f7 */
+    --color-text-muted:     0 0% 60%;      /* BOLD GRAY #999999 */
+    --color-border:         0 0% 25%;      /* DARK BORDER #404040 */
+
+    --background:           var(--color-surface);
+    --foreground:           var(--color-text);
+
+    --card:                 var(--color-surface-alt);
+    --card-foreground:      var(--color-text);
+
+    --popover:              var(--color-surface-alt);
+    --popover-foreground:   var(--color-text);
+
+    --primary:              145 100% 50%;  /* BRIGHT NEON GREEN #1dd1a1 */
+    --primary-foreground:   0 0% 11%;
+
+    --secondary:            0 0% 20%;
+    --secondary-foreground: var(--color-text);
+
+    --muted:                0 0% 20%;
+    --muted-foreground:     var(--color-text-muted);
+
+    --accent:               145 100% 55%;  /* EVEN BRIGHTER */
+    --accent-foreground:    0 0% 11%;
+
+    --destructive:          0 72% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border:               var(--color-border);
+    --input:                var(--color-border);
+    --ring:                 145 100% 50%;
+
+    --chart-1:  145 100% 50%;
+    --chart-2:  145 100% 55%;
+    --chart-3:  145 90% 60%;
+    --chart-4:  145 80% 65%;
+    --chart-5:  145 70% 75%;
   }
 }
 
@@ -58,39 +117,226 @@
   * {
     @apply border-border;
   }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground antialiased;
+    font-family: var(--font-body), system-ui, sans-serif;
     font-feature-settings: "rlig" 1, "calt" 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* ── Typography scale — BOLD ── */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display), Georgia, serif;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    font-weight: 800;
+  }
+
+  h1 {
+    @apply text-4xl md:text-5xl lg:text-6xl font-black;
+  }
+
+  h2 {
+    @apply text-3xl md:text-4xl font-bold;
+  }
+
+  h3 {
+    @apply text-2xl md:text-3xl font-bold;
+  }
+
+  /* ── Focus ring — accessible, branded ── */
+  :focus-visible {
+    outline: 2px solid hsl(var(--ring));
+    outline-offset: 3px;
+    border-radius: var(--radius);
+  }
+
+  /* ── Selection color ── */
+  ::selection {
+    background-color: hsl(152 55% 22% / 0.18);
+    color: hsl(155 40% 10%);
   }
 }
 
+/* ─── Layout utilities ──────────────────────────────────────────────────── */
 @layer components {
   .container-px {
     @apply px-4 sm:px-6 md:px-8 lg:px-12;
   }
+
   .section-py {
     @apply py-16 md:py-24;
   }
+
+  .section-py-sm {
+    @apply py-10 md:py-16;
+  }
+
+  /* ── Typography helpers ── */
   .heading-serif {
     font-family: var(--font-display), Georgia, serif;
+    letter-spacing: -0.025em;
   }
+
   .text-balance {
     text-wrap: balance;
   }
-  .gradient-emerald {
-    background: linear-gradient(135deg, hsl(165 30% 7%) 0%, hsl(165 25% 10%) 50%, hsl(165 30% 7%) 100%);
+
+  /* ── Green & white gradient surfaces - BOLD ── */
+  .gradient-hero {
+    background: linear-gradient(
+      160deg,
+      hsl(0 0% 11%) 0%,
+      hsl(0 0% 16%) 50%,
+      hsl(0 0% 11%) 100%
+    );
   }
-  .gold-line {
-    background: linear-gradient(90deg, transparent, hsl(42 35% 62%), transparent);
+
+  .gradient-section {
+    background: linear-gradient(
+      180deg,
+      hsl(0 0% 100%) 0%,
+      hsl(0 0% 99%) 100%
+    );
   }
+
+  .gradient-section-dark {
+    background: linear-gradient(
+      180deg,
+      hsl(0 0% 11%) 0%,
+      hsl(0 0% 16%) 100%
+    );
+  }
+
+  /* ── Accent line - BOLD NEON ── */
+  .accent-line {
+    background: linear-gradient(
+      90deg,
+      transparent,
+      hsl(145 100% 43%),
+      transparent
+    );
+    height: 3px;
+    box-shadow: 0 0 12px hsl(145 100% 43% / 0.4);
+  }
+
+  .accent-line-left {
+    background: linear-gradient(
+      90deg,
+      hsl(145 100% 43%),
+      transparent
+    );
+    height: 3px;
+    box-shadow: 0 0 12px hsl(145 100% 43% / 0.4);
+  }
+
+  /* ── Islamic / editorial geometric motif — green line-art ── */
+  .geometric-motif {
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%231a5c38' stroke-width='0.5' opacity='0.12'%3E%3Cpolygon points='30,2 56,16 56,44 30,58 4,44 4,16'/%3E%3Cpolygon points='30,10 50,20 50,40 30,50 10,40 10,20'/%3E%3Cline x1='30' y1='2' x2='30' y2='10'/%3E%3Cline x1='30' y1='50' x2='30' y2='58'/%3E%3Cline x1='4' y1='16' x2='10' y2='20'/%3E%3Cline x1='50' y1='20' x2='56' y2='16'/%3E%3Cline x1='4' y1='44' x2='10' y2='40'/%3E%3Cline x1='50' y1='40' x2='56' y2='44'/%3E%3C/g%3E%3C/svg%3E");
+  }
+
+  /* ── Glass card — light mode ── */
   .glass-card {
-    background: hsl(165 25% 9% / 0.6);
-    backdrop-filter: blur(12px);
-    border: 1px solid hsl(165 15% 18% / 0.6);
+    background: hsl(0 0% 100% / 0.85);
+    backdrop-filter: blur(16px);
+    border: 2px solid hsl(145 100% 43% / 0.15);
+    box-shadow: 0 8px 32px hsl(145 100% 43% / 0.1);
+  }
+
+  /* ── Glass card — dark surfaces ── */
+  .glass-card-dark {
+    background: hsl(0 0% 16% / 0.8);
+    backdrop-filter: blur(16px);
+    border: 2px solid hsl(145 100% 43% / 0.2);
+    box-shadow: 0 8px 32px hsl(145 100% 43% / 0.15);
+  }
+
+  /* ── Premium button base - BOLD & CATCHY ── */
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2;
+    @apply bg-primary text-primary-foreground;
+    @apply px-7 py-3.5 rounded-lg text-sm font-bold tracking-wider;
+    @apply transition-all duration-200 border-2 border-primary;
+    @apply hover:shadow-[0_8px_32px_hsl(145_100%_43%/0.4)] hover:scale-105;
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2;
+  }
+
+  .btn-outline {
+    @apply inline-flex items-center justify-center gap-2;
+    @apply border-2 border-primary text-primary bg-transparent;
+    @apply px-7 py-3.5 rounded-lg text-sm font-bold tracking-wider;
+    @apply transition-all duration-200;
+    @apply hover:bg-primary hover:text-primary-foreground hover:shadow-[0_8px_32px_hsl(145_100%_43%/0.3)] hover:scale-105;
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2;
+    @apply text-primary bg-transparent;
+    @apply px-5 py-3 rounded-lg text-sm font-semibold;
+    @apply transition-all duration-200;
+    @apply hover:bg-primary hover:text-white hover:shadow-[0_4px_16px_hsl(145_100%_43%/0.25)];
+  }
+  
+  .btn-ghost:hover {
+    @apply transform scale-105;
+  }
+
+  /* ── Card surface - BOLD HOVER EFFECT ── */
+  .card-base {
+    @apply bg-card border-2 border-border rounded-lg shadow-sm;
+    @apply transition-all duration-300;
+    @apply hover:shadow-[0_12px_40px_rgba(16,185,129,0.15)] hover:border-primary/40 hover:scale-[1.02];
+  }
+
+  /* ── Section label / eyebrow - BOLD ── */
+  .eyebrow {
+    @apply text-xs font-black uppercase tracking-[0.2em] text-primary;
+  }
+
+  /* ── Prose content - BOLD ── */
+  .prose-editorial {
+    @apply text-base leading-[1.85] text-foreground font-medium;
+  }
+
+  .prose-editorial h2 {
+    @apply heading-serif text-3xl font-black mt-10 mb-4 text-foreground;
+  }
+
+  .prose-editorial h3 {
+    @apply heading-serif text-2xl font-bold mt-8 mb-3 text-foreground;
+  }
+
+  .prose-editorial p {
+    @apply mb-5 text-balance font-medium;
+  }
+
+  .prose-editorial a {
+    @apply text-primary underline underline-offset-2 font-bold hover:text-accent transition-colors duration-200;
+  }
+
+  .prose-editorial blockquote {
+    @apply border-l-4 border-primary pl-5 italic text-muted-foreground my-6 font-semibold;
+  }
+
+  .prose-editorial ul {
+    @apply list-disc list-outside pl-5 mb-5 space-y-1 font-medium;
+  }
+
+  .prose-editorial ol {
+    @apply list-decimal list-outside pl-5 mb-5 space-y-1 font-medium;
   }
 }
 
+/* ─── Utilities ─────────────────────────────────────────────────────────── */
 @layer utilities {
+  /* ── Scrollbar ── */
   .scrollbar-hide {
     -ms-overflow-style: none;
     scrollbar-width: none;
@@ -98,15 +344,131 @@
   .scrollbar-hide::-webkit-scrollbar {
     display: none;
   }
+
+  .scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: hsl(145 100% 43% / 0.4) transparent;
+  }
+
+  /* ── Text shadow for hero overlays ── */
+  .text-shadow-sm {
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+  }
+
   .text-shadow-lg {
-    text-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  }
+
+  /* ── Hover lift - ENHANCED ── */
+  .hover-lift {
+    @apply transition-all duration-200;
+  }
+  .hover-lift:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px hsl(145 100% 43% / 0.2);
+  }
+
+  /* ── Subtle grain texture for artistic surfaces ── */
+  .texture-grain {
+    position: relative;
+  }
+  .texture-grain::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.025'/%3E%3C/svg%3E");
+    pointer-events: none;
+  }
+
+  /* ── Gradient text - BOLD ── */
+  .gradient-text {
+    background: linear-gradient(135deg, hsl(145 100% 43%), hsl(145 83% 35%));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 900;
+  }
+
+  /* ── Pulse glow effect ── */
+  .glow-pulse {
+    animation: glow-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  @keyframes glow-pulse {
+    0%, 100% {
+      box-shadow: 0 0 0 0 hsl(145 100% 43% / 0.4);
+    }
+    50% {
+      box-shadow: 0 0 0 12px hsl(145 100% 43% / 0);
+    }
+  }
+
+  /* ── Bold link hover ── */
+  .link-bold {
+    @apply relative font-bold text-primary transition-all duration-200;
+  }
+
+  .link-bold::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0%;
+    height: 3px;
+    background: linear-gradient(90deg, hsl(145 100% 43%), hsl(145 83% 35%));
+    border-radius: 2px;
+    transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .link-bold:hover::after {
+    width: 100%;
+  }
+
+  /* ── Arabic text alignment ── */
+  [dir="rtl"] {
+    font-feature-settings: "kern" 1;
+  }
+
+  /* ── Amharic text support ── */
+  .text-amharic {
+    font-family: var(--font-body), 'Noto Sans Ethiopic', sans-serif;
+    line-height: 1.7;
+  }
+
+  /* ── Bold badge ── */
+  .badge-bold {
+    @apply inline-flex items-center gap-2 px-4 py-2 rounded-full font-bold text-sm;
+    @apply border-2 border-primary bg-primary/10 text-primary;
+    @apply transition-all duration-200;
+  }
+
+  .badge-bold:hover {
+    @apply bg-primary text-white border-primary shadow-[0_4px_16px_hsl(145_100%_43%/0.3)];
+  }
+
+  /* ── Bold section divider ── */
+  .section-divider {
+    @apply h-1 w-full accent-line;
+  }
+
+  /* ── Bold focus ring ── */
+  .focus-ring-bold {
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-[hsl(0_0%_11%)];
   }
 }
 
+/* ─── Reduced motion ────────────────────────────────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
+}
+
+/* ─── Print ─────────────────────────────────────────────────────────────── */
+@media print {
+  .no-print { display: none !important; }
+  body { @apply text-black bg-white; }
 }

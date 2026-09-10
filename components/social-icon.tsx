@@ -1,4 +1,3 @@
-import { getSocialIcon } from '@/components/social-icon';
 import type { LucideIcon } from 'lucide-react';
 import {
   Send, Youtube, Music2, Instagram, Facebook,

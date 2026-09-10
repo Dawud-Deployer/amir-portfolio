@@ -142,7 +142,6 @@ export type ThemeSettings = {
   primary_bg: string;
   secondary_bg: string;
   accent: string;
-  gold_highlight: string;
   text_color: string;
   muted_text: string;
   heading_font: string;
